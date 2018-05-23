@@ -1,0 +1,14 @@
+add 4
+add 10
+add 6
+add 8
+add 22
+add 12
+add 32
+add 16
+display 0
+paint 0
+delete 8
+delete 22
+display 0
+paint 0
