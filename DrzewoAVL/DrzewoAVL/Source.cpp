@@ -1,6 +1,6 @@
 #include "Header.h"
 
-struct node *newNode(int value)
+struct node *newNode(int value) //struktura nowego wezla
 {
 	struct node *temp = (struct node *)malloc(sizeof(struct node));
 	temp->key = value;
@@ -9,17 +9,12 @@ struct node *newNode(int value)
 	return temp;
 }
 
-int level(struct node *h)
+int level(struct node *l) //funkcja zwraca poziom (wysokosc) na jakiej znajduje sie konkretny wezel
 {
-	if (h == NULL)
+	if (l == NULL)
 		return 0;
 
-	return h->level;
-}
-
-int max(int a, int b)
-{
-	return (a > b) ? a : b;
+	return l->level;
 }
 
 int getBalance(struct node *bf)
@@ -29,7 +24,12 @@ int getBalance(struct node *bf)
 	return level(bf->left) - level(bf->right);
 }
 
-struct node *rightRotate(struct node *y)
+int max(int a, int b) //sprawdza, ktory argument jest wiekszy, potrzebne do nadawania poziomu nowemu wezlowi
+{
+	return (a > b) ? a : b;
+}
+
+struct node *rightRotate(struct node *y) //rotacja w prawo
 {
 	struct node *x = y->left;
 	struct node *T2 = x->right;
@@ -44,7 +44,7 @@ struct node *rightRotate(struct node *y)
 }
 
 
-struct node *leftRotate(struct node *x)
+struct node *leftRotate(struct node *x) //rotacja w lewo
 {
 	struct node *y = x->right;
 	struct node *T2 = y->left;
@@ -58,7 +58,7 @@ struct node *leftRotate(struct node *x)
 	return y;
 }
 
-struct node * findMinNode(struct node* node)
+struct node * findMinNode(struct node* node) //znajdz najmniejszy wezel
 {
 	struct node* seek = node;
 
@@ -68,8 +68,8 @@ struct node * findMinNode(struct node* node)
 //	cout << seek->key << " <- This is min value" << endl;
 	return seek;
 }
-
-struct node * findMaxNode(struct node* node)
+/*
+struct node * findMaxNode(struct node* node) //z
 {
 	struct node* seek = node;
 
@@ -79,9 +79,9 @@ struct node * findMaxNode(struct node* node)
 	cout << seek->key << " <- This is max value" << endl;
 	return seek;
 }
+*/
 
-
-struct node* add(struct node* node, int key)
+struct node* add(struct node* node, int key) //dodawanie nowego wezla
 {
 	if (node == NULL)
 		return(newNode(key));
@@ -114,7 +114,8 @@ struct node* add(struct node* node, int key)
 		node->right = rightRotate(node->right);
 		return leftRotate(node);
 	}
-	cout << "I've added element " << node->key << endl;
+
+//	cout << "I've added element " << node->key << endl;
 	return node;
 }
 /*
@@ -130,7 +131,7 @@ struct node* add(struct node* node, int key)
 	return node;
 }
 */
-struct node* deleteNode(struct node* root, int key)
+struct node* deleteNode(struct node* root, int key) //usuwanie wezla
 {
 	if (root == NULL)
 		return root;
@@ -189,7 +190,7 @@ struct node* deleteNode(struct node* root, int key)
 		root->right = rightRotate(root->right);
 		return leftRotate(root);
 	}
-	cout << "I've deleted element " << key << endl;
+//	cout << "I've deleted element " << key << endl;
 	return root;
 }
 
@@ -225,7 +226,7 @@ struct node* deleteNode(struct node* root, int key)
 	return root;
 }
 */
-void display(struct node *root)
+void display(struct node *root) //wyswietlanie proste
 {
 	if (root != NULL)
 	{
@@ -235,7 +236,7 @@ void display(struct node *root)
 	}
 }
 
-void paint(struct node *root, int distance)
+void paint(struct node *root, int distance) //wyswietlanie graficzne
 {
 	int place = 10;
 

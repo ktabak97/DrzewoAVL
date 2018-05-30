@@ -8,7 +8,7 @@
 
 using namespace std;
 
-struct node
+struct node //struktura wezla
 {
 	int key;
 	struct node *left;
@@ -17,7 +17,7 @@ struct node
 };
 
 
-int level(struct Node *h);
+int level(struct Node *l);
 int max(int a, int b);
 int getBalance(struct node *bf);
 
@@ -27,7 +27,6 @@ struct node *leftRotate(struct node *x);
 void display(struct node *root);
 struct node* add(struct node* node, int key);
 struct node * findMinNode(struct node* node);
-struct node * findMaxNode(struct node* node);
 struct node* deleteNode(struct node* root, int key);
 void paint(node *root, int distance);
-//void safeFile(node *root);
+
